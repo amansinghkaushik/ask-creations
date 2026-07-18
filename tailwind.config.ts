@@ -13,7 +13,32 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: [
+          "Clash Display",
+          "-apple-system",
+          "Roboto",
+          "Helvetica",
+          "sans-serif",
+        ],
+        display: [
+          "Clash Display",
+          "-apple-system",
+          "Roboto",
+          "Helvetica",
+          "sans-serif",
+        ],
+      },
       colors: {
+        brand: {
+          red: "#FF3D3D",
+        },
+        ink: {
+          1: "#333333",
+          2: "#4F4F4F",
+          3: "#828282",
+          4: "#BDBDBD",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

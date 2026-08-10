@@ -127,14 +127,6 @@ export default function HeroSection({ ready = false }) {
           '<'
         )
 
-      // 2. Pin HeroSection for 100vh until ManifestoSection covers it completely
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: 'top top',
-        end: '+=100%',
-        pin: true,
-        pinSpacing: false,
-      })
     },
     { scope: containerRef, dependencies: [ready] }
   )

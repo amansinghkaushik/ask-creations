@@ -56,7 +56,7 @@ export default function CreativitySection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-white text-black py-20 md:py-32 px-4 sm:px-6 relative flex flex-col items-center justify-center select-none overflow-hidden"
+      className="w-full bg-white text-black py-20 md:py-32 px-4 sm:px-6 relative z-10 flex flex-col items-center justify-center select-none overflow-hidden"
     >
       {/* Container holding center image & layered headline */}
       <div className="relative max-w-6xl w-full flex items-center justify-center my-12">

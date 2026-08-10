@@ -141,7 +141,7 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative z-0 w-full h-screen bg-[#FF3D3D] overflow-hidden flex flex-col justify-end select-none pt-20"
+      className="relative z-0 w-full h-[100dvh] bg-[#FF3D3D] overflow-hidden flex flex-col justify-end select-none pt-20"
     >
       {/* Hero Content Wrapper */}
       <div className="relative w-full h-full flex flex-col justify-end">

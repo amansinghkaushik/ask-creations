@@ -1,8 +1,8 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
+import { TransitionLink } from './PageTransitionContext'
 import taginMockup from '../assets/taginmockup.png'
 import sundarbanImg from '../assets/sundarban.png'
 import pawwfyImg from '../assets/pawwfy.png'
@@ -165,15 +165,15 @@ export default function HighlightsSection() {
 
         {/* View All Projects CTA Button */}
         <div className="flex justify-center mt-16 md:mt-20">
-          <Link
+          <TransitionLink
             to="/projects"
-            className="inline-flex items-center gap-3 font-clash font-semibold text-sm uppercase tracking-widest px-8 py-4 bg-black text-white hover:bg-[#FF3D3D] transition-colors duration-300 border border-black"
+            className="inline-flex items-center gap-3 bg-black text-white font-clash font-semibold text-xs sm:text-sm px-6 sm:px-8 py-3.5 sm:py-4 tracking-wider uppercase hover:bg-[#FF3D3D] transition-colors border border-white/10"
           >
-            <span>View All Projects</span>
-            <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth="1.5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 13L13 3M13 3H6M13 3v7" />
+            VIEW ALL PROJECTS
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </Link>
+          </TransitionLink>
         </div>
       </div>
     </section>

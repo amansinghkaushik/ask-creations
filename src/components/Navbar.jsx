@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import MenuButton from './MenuButton'
 import TextCycler from './TextCycler'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { TransitionLink } from './PageTransitionContext'
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -76,12 +77,12 @@ function Navbar() {
         {/* Left slot: datetime on home, back button on sub-pages */}
         <div className="flex-1 font-clash text-[16px] font-semibold text-white hidden md:flex items-center">
           {isSubPage ? (
-            <Link to="/" className="flex items-center gap-2 hover:text-[#FF3D3D] transition-colors duration-300">
+            <TransitionLink to="/" className="flex items-center gap-2 hover:text-[#FF3D3D] transition-colors duration-300">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
               Back to Home
-            </Link>
+            </TransitionLink>
           ) : (
             dateTime
           )}
@@ -91,12 +92,12 @@ function Navbar() {
         <div className="flex-1 text-[16px] font-semibold text-left md:text-center flex justify-start md:justify-center items-center">
           {/* Mobile: back button on sub-pages, datetime on home */}
           {isSubPage ? (
-            <Link to="/" className="md:hidden flex items-center gap-2 font-clash text-sm hover:text-[#FF3D3D] transition-colors duration-300">
+            <TransitionLink to="/" className="md:hidden flex items-center gap-2 font-clash text-sm hover:text-[#FF3D3D] transition-colors duration-300">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
               Back to Home
-            </Link>
+            </TransitionLink>
           ) : (
             <span className="md:hidden font-clash text-xs text-white/80 tracking-wide">{dateTime}</span>
           )}
@@ -119,22 +120,22 @@ function Navbar() {
                 : 'flex opacity-0 -translate-y-full pointer-events-none md:pointer-events-auto md:translate-y-0 md:translate-x-[120%]'}
             `}
           >
-            <Link
+            <TransitionLink
               to="/projects"
               className="group relative text-4xl md:text-[16px] font-semibold transition-colors duration-300 hover:text-[#FF3D3D] whitespace-nowrap"
               onClick={() => setIsOpen(false)}
             >
               Projects
               <span className="absolute -bottom-1 md:-bottom-1.5 left-0 h-[3px] md:h-[1.5px] w-full origin-left scale-x-0 bg-[#FF3D3D] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
-            </Link>
-            <Link
+            </TransitionLink>
+            <TransitionLink
               to="/services"
               className="group relative text-4xl md:text-[16px] font-semibold transition-colors duration-300 hover:text-[#FF3D3D] whitespace-nowrap"
               onClick={() => setIsOpen(false)}
             >
               Services
               <span className="absolute -bottom-1 md:-bottom-1.5 left-0 h-[3px] md:h-[1.5px] w-full origin-left scale-x-0 bg-[#FF3D3D] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
-            </Link>
+            </TransitionLink>
             <a
               href="/#about"
               className="group relative text-4xl md:text-[16px] font-semibold transition-colors duration-300 hover:text-[#FF3D3D] whitespace-nowrap"
@@ -143,14 +144,14 @@ function Navbar() {
               About
               <span className="absolute -bottom-1 md:-bottom-1.5 left-0 h-[3px] md:h-[1.5px] w-full origin-left scale-x-0 bg-[#FF3D3D] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
             </a>
-            <Link
+            <TransitionLink
               to="/contact"
               className="group relative text-4xl md:text-[16px] font-semibold transition-colors duration-300 hover:text-[#FF3D3D] whitespace-nowrap"
               onClick={() => setIsOpen(false)}
             >
               Contact
               <span className="absolute -bottom-1 md:-bottom-1.5 left-0 h-[3px] md:h-[1.5px] w-full origin-left scale-x-0 bg-[#FF3D3D] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
-            </Link>
+            </TransitionLink>
           </div>
 
           <div className="transition-all duration-400 ease-in-out z-50 shrink-0">

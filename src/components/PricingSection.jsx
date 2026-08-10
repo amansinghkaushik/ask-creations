@@ -1,8 +1,8 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
+import { TransitionLink } from './PageTransitionContext'
 import shapeImg from '../assets/Shape.png'
 import askLogo from '../assets/Asklogo.svg'
 
@@ -199,7 +199,7 @@ export default function PricingSection() {
 
               {/* CTA */}
               <div className="pt-6">
-                <Link
+                <TransitionLink
                   to="/contact"
                   className="inline-flex items-center gap-2.5 font-clash font-semibold text-xs uppercase tracking-widest px-6 py-3.5 bg-black text-white hover:bg-[#FF3D3D] transition-all duration-300 shadow-sm"
                 >
@@ -207,7 +207,7 @@ export default function PricingSection() {
                   <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" stroke="currentColor" strokeWidth="1.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 13L13 3M13 3H6M13 3v7" />
                   </svg>
-                </Link>
+                </TransitionLink>
               </div>
             </div>
           </div>
@@ -225,7 +225,7 @@ export default function PricingSection() {
                   Structured design engagements for clearly defined requirements. Fixed scope and timeline.
                 </p>
                 <div className="mt-2">
-                  <Link
+                  <TransitionLink
                     to="/contact"
                     className="inline-flex items-center gap-2.5 font-clash font-semibold text-xs uppercase tracking-widest px-6 py-3.5 bg-white text-black hover:bg-[#FF3D3D] hover:text-white transition-all duration-300 shadow-sm"
                   >
@@ -233,7 +233,7 @@ export default function PricingSection() {
                     <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" stroke="currentColor" strokeWidth="1.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 13L13 3M13 3H6M13 3v7" />
                     </svg>
-                  </Link>
+                  </TransitionLink>
                 </div>
               </div>
 
@@ -254,9 +254,9 @@ export default function PricingSection() {
         {/* Bottom note */}
         <p className="mt-6 text-center font-sans text-xs text-neutral-400">
           Need something fully custom?{' '}
-          <Link to="/contact" className="text-[#FF3D3D] hover:underline transition-colors">
+          <TransitionLink to="/contact" className="text-[#FF3D3D] hover:underline transition-colors">
             Let's talk →
-          </Link>
+          </TransitionLink>
         </p>
 
       </div>

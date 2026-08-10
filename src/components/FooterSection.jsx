@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { TransitionLink } from './PageTransitionContext'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
@@ -99,12 +99,12 @@ export default function FooterSection() {
                 placeholder="E-mail"
                 className="bg-transparent border-b border-neutral-700 py-3 text-sm text-white placeholder:text-neutral-500 focus:outline-none focus:border-white w-full transition-colors"
               />
-              <Link
+              <TransitionLink
                 to="/contact"
                 className="bg-white text-black font-clash font-bold text-xs uppercase px-6 py-3.5 hover:bg-[#FF3D3D] hover:text-white transition-colors shrink-0"
               >
                 GET IN TOUCH
-              </Link>
+              </TransitionLink>
             </div>
           </div>
 

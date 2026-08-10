@@ -1,8 +1,8 @@
 import { useState, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
+import { TransitionLink } from './PageTransitionContext'
 import taginMockup from '../assets/taginmockup.png'
 import sundarbanImg from '../assets/sundarban.png'
 import pawwfyImg from '../assets/pawwfy.png'
@@ -190,7 +190,7 @@ export default function ServicesSection() {
               {activeService.tagline}
             </h3>
             {/* Work with us CTA — matching FAQSection Get in touch style */}
-            <Link
+            <TransitionLink
               to="/services"
               className="text-[#FF3D3D] font-clash font-semibold text-xs sm:text-sm tracking-wide inline-flex items-center gap-1 hover:text-white transition-colors group mt-1 sm:mt-2"
             >
@@ -212,7 +212,7 @@ export default function ServicesSection() {
               <div className="flex items-center">
                 <span className="underline underline-offset-4">Explore our services</span>
               </div>
-            </Link>
+            </TransitionLink>
           </div>
         </div>
 

@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import heroImg from '../assets/HeroImg.png'
 import AvatarImg from '../assets/AvatarImg.jpeg'
+import { TransitionLink } from './PageTransitionContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export default function HeroSection() {
+export default function HeroSection({ ready = false }) {
   const containerRef = useRef(null)
 
   // Track window width for responsive B&W cutout box sizing
@@ -43,42 +43,53 @@ export default function HeroSection() {
 
   useGSAP(
     () => {
+      // Set initial hidden state immediately to prevent any visual flash/glitch
+      gsap.set('.hero-image-bg', { y: 70, opacity: 0, scale: 0.95 })
+      gsap.set('.hero-line-1', { y: 80, opacity: 0 })
+      gsap.set('.hero-line-2', { y: 90, opacity: 0 })
+      gsap.set('.hero-services-item', { y: '100%', opacity: 0 })
+      gsap.set('.hero-left-para', { clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)', opacity: 0 })
+      gsap.set('.hero-social-icon', { y: -30, opacity: 0 })
+      gsap.set('.hero-cta-block', { x: 60, opacity: 0 })
+
+      if (!ready) return
+
       // 1. Entry Animation Timeline
       const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 1.1 } })
 
       // Step 1: Hero Image appears smoothly
-      tl.from('.hero-image-bg', {
-        y: 70,
-        opacity: 0,
-        scale: 0.95,
+      tl.to('.hero-image-bg', {
+        y: 0,
+        opacity: 1,
+        scale: 1,
         duration: 1.3,
       })
 
       // Step 2: Bottom Text (ASK & CREATIONS)
-      tl.from(
+      tl.to(
         '.hero-line-1',
         {
-          y: 80,
-          opacity: 0,
+          y: 0,
+          opacity: 1,
           duration: 1.1,
         },
         '-=0.7'
-      ).from(
+      ).to(
         '.hero-line-2',
         {
-          y: 90,
-          opacity: 0,
+          y: 0,
+          opacity: 1,
           duration: 1.1,
         },
         '-=0.8'
       )
 
       // Step 3: Center Horizontal Services Bar text appears from bottom (clipped)
-      tl.from(
+      tl.to(
         '.hero-services-item',
         {
-          y: '100%',
-          opacity: 0,
+          y: '0%',
+          opacity: 1,
           duration: 0.9,
           stagger: 0.08,
         },
@@ -86,12 +97,8 @@ export default function HeroSection() {
       )
 
       // Step 4: Left Paragraph expands left-to-right + Social icons top-to-bottom + CTA Block right-to-left AT THE SAME TIME
-      tl.fromTo(
+      tl.to(
         '.hero-left-para',
-        {
-          clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
-          opacity: 0,
-        },
         {
           clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
           opacity: 1,
@@ -100,21 +107,21 @@ export default function HeroSection() {
         },
         '-=0.4'
       )
-        .from(
+        .to(
           '.hero-social-icon',
           {
-            y: -30,
-            opacity: 0,
+            y: 0,
+            opacity: 1,
             duration: 0.9,
             stagger: 0.08,
           },
           '<'
         )
-        .from(
+        .to(
           '.hero-cta-block',
           {
-            x: 60,
-            opacity: 0,
+            x: 0,
+            opacity: 1,
             duration: 1.1,
           },
           '<'
@@ -129,7 +136,7 @@ export default function HeroSection() {
         pinSpacing: false,
       })
     },
-    { scope: containerRef }
+    { scope: containerRef, dependencies: [ready] }
   )
 
   // Calculated Inset values for clipping out the 5px blur inside the rectangle
@@ -266,9 +273,9 @@ export default function HeroSection() {
                 </div>
               </div>
               {/* CTA Button */}
-              <Link to="/contact" className="bg-black text-white font-clash font-semibold text-xs sm:text-sm px-5 py-3 sm:px-8 sm:py-4 tracking-wider uppercase hover:bg-white hover:text-black transition-colors border border-white/10 whitespace-nowrap shrink-0">
+              <TransitionLink to="/contact" className="bg-black text-white font-clash font-semibold text-xs sm:text-sm px-5 py-3 sm:px-8 sm:py-4 tracking-wider uppercase hover:bg-white hover:text-black transition-colors border border-white/10 whitespace-nowrap shrink-0">
                 GET IN TOUCH
-              </Link>
+              </TransitionLink>
             </div>
           </div>
 
@@ -300,9 +307,9 @@ export default function HeroSection() {
               </div>
 
               {/* CTA Button */}
-              <Link to="/contact" className="bg-black text-white font-clash font-semibold text-base px-8 py-4 tracking-wider uppercase hover:bg-white hover:text-black transition-colors border border-white/10 whitespace-nowrap shrink-0">
+              <TransitionLink to="/contact" className="bg-black text-white font-clash font-semibold text-base px-8 py-4 tracking-wider uppercase hover:bg-white hover:text-black transition-colors border border-white/10 whitespace-nowrap shrink-0">
                 GET IN TOUCH
-              </Link>
+              </TransitionLink>
             </div>
           </div>
 

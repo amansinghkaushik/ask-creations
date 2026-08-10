@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
@@ -16,15 +17,28 @@ import FooterSection from './components/FooterSection'
 import ContactPage from './pages/ContactPage'
 import ProjectsPage from './pages/ProjectsPage'
 import ServicesPage from './pages/ServicesPage'
+import Preloader from './components/Preloader'
+import { PageTransitionProvider } from './components/PageTransitionContext'
 
 function HomePage() {
+  const [heroReady, setHeroReady] = useState(false)
+  const [preloaderFinished, setPreloaderFinished] = useState(false)
+
   return (
     <main className="min-h-screen w-full bg-white relative">
+      {/* Preloader — sits above everything, fires heroReady on wipe start and unmounts on complete */}
+      {!preloaderFinished && (
+        <Preloader
+          onStartWipe={() => setHeroReady(true)}
+          onComplete={() => setPreloaderFinished(true)}
+        />
+      )}
+
       <Navbar />
-      <HeroSection />
-      <ManifestoSection />
+      <HeroSection ready={heroReady} />
       <CreativitySection />
       <ShowcaseSection />
+      <ManifestoSection />
       <ServicesSection />
       <HighlightsSection />
       <ProcessSection />
@@ -40,11 +54,14 @@ function HomePage() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/projects" element={<ProjectsPage />} />
-      <Route path="/services" element={<ServicesPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-    </Routes>
+    <PageTransitionProvider>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+    </PageTransitionProvider>
   )
 }
+

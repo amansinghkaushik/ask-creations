@@ -110,8 +110,8 @@ function Navbar() {
         <div className="flex-1 flex justify-end items-center gap-7 md:overflow-hidden">
           <div
             className={`
-              absolute top-0 -left-4 -right-4 h-[100dvh] bg-black flex-col items-center justify-center gap-10 -z-10
-              md:static md:h-auto md:bg-transparent md:border-none md:flex-row md:py-0 md:gap-6 md:z-auto md:justify-end
+              fixed top-0 left-0 w-screen h-[100dvh] bg-black flex-col items-center justify-center gap-10 -z-10
+              md:static md:w-auto md:h-auto md:bg-transparent md:border-none md:flex-row md:py-0 md:gap-6 md:z-auto md:justify-end
               font-clash font-semibold
               transition-all duration-[500ms] md:duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]
               ${isOpen 

@@ -146,7 +146,7 @@ export default function HeroSection() {
       {/* Hero Content Wrapper */}
       <div className="relative w-full h-full flex flex-col justify-end">
         {/* Layer 1: Crisp Clear Background Hero Cutout Image (0 Blur: z-10) */}
-        <div className="absolute bottom-[-160px] left-[50%] -translate-x-1/2 h-[150vh] md:h-[150vh] lg:h-[150vh] z-10 pointer-events-none flex items-end justify-center">
+        <div className="absolute bottom-[-160px] left-[50%] -translate-x-1/2 h-[140vh] md:h-[150vh] lg:h-[150vh] z-10 pointer-events-none flex items-end justify-center">
           <img
             src={heroImg}
             alt="Hero Cutout Background"
@@ -244,35 +244,63 @@ export default function HeroSection() {
 
         {/* Layer 2: Single Wrapper Container for Typography & CTA Block */}
         <div className="relative z-20 w-full px-4 sm:px-6 md:px-10 lg:px-12 pb-0 flex flex-col justify-end pointer-events-none box-border max-w-full overflow-hidden">
-          {/* Top Row: ASK on the Left + CTA Block on the Right */}
+
+          {/* Mobile-only: CTA Block sits ABOVE the ASK/CREATIONS text */}
+          <div className="hero-cta-block flex lg:hidden items-center justify-end gap-2 pointer-events-auto mb-2">
+            {/* Avatar & Text */}
+            <div className="flex flex-col items-end gap-1.5">
+              <div className="flex items-center gap-2">
+                <span className="text-white text-[10px] sm:text-xs font-normal max-w-[140px] sm:max-w-[200px] text-right leading-tight">
+                  Schedule A <strong className="font-semibold text-white">15-Minute Call</strong> With Our Team To Discuss our Project
+                </span>
+                {/* Two Overlapping Circles */}
+                <div className="relative flex items-center shrink-0">
+                  <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-white shadow-lg z-10 shrink-0">
+                    <img src={AvatarImg} alt="Avatar" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black text-white flex items-center justify-center z-0 -ml-4 sm:-ml-5 shrink-0 shadow-md">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 stroke-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              {/* CTA Button */}
+              <Link to="/contact" className="bg-black text-white font-clash font-semibold text-xs sm:text-sm px-5 py-3 sm:px-8 sm:py-4 tracking-wider uppercase hover:bg-white hover:text-black transition-colors border border-white/10 whitespace-nowrap shrink-0">
+                GET IN TOUCH
+              </Link>
+            </div>
+          </div>
+
+          {/* Top Row: ASK on the Left + CTA Block on the Right (desktop only) */}
           <div className="w-full flex items-start justify-between gap-4 sm:gap-6 md:gap-8">
             {/* Line 1: ASK */}
             <div className="hero-line-1 font-clash font-semibold text-white uppercase text-[16.32vw] leading-[0.78] tracking-tight shrink">
               ASK
             </div>
 
-            {/* CTA Block & Avatar */}
-            <div className="hero-cta-block flex flex-row lg:flex-col items-center lg:items-end justify-end gap-3 sm:gap-4 lg:gap-2.5 pointer-events-auto pt-1 sm:pt-2 shrink-0">
+            {/* CTA Block & Avatar — desktop only */}
+            <div className="hero-cta-block hidden lg:flex flex-col items-end justify-end gap-2.5 pointer-events-auto pt-1 shrink-0">
               {/* Avatar & Text Div */}
-              <div className="flex items-center gap-2 sm:gap-3">
-                <span className="text-white text-[10px] sm:text-xs md:text-sm lg:text-base font-normal max-w-[110px] sm:max-w-[180px] md:max-w-[220px] lg:max-w-[250px] text-right leading-tight">
+              <div className="flex items-center gap-3">
+                <span className="text-white text-base font-normal max-w-[250px] text-right leading-tight">
                   Schedule A <strong className="font-semibold text-white">15-Minute Call</strong> With Our Team To Discuss our Project
                 </span>
                 {/* Two Overlapping Circles */}
                 <div className="relative flex items-center shrink-0">
-                  <div className="relative w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full overflow-hidden border-2 border-white shadow-lg z-10 shrink-0">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg z-10 shrink-0">
                     <img src={AvatarImg} alt="Avatar" className="w-full h-full object-cover" />
                   </div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-black text-white flex items-center justify-center z-0 -ml-4 sm:-ml-5 md:-ml-6 shrink-0 shadow-md">
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 stroke-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center z-0 -ml-6 shrink-0 shadow-md">
+                    <svg className="w-6 h-6 stroke-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
                   </div>
                 </div>
               </div>
 
-              {/* CTA Button — same size as desktop */}
-              <Link to="/contact" className="bg-black text-white font-clash font-semibold text-xs sm:text-sm lg:text-base px-5 py-3 sm:px-8 sm:py-4 tracking-wider uppercase hover:bg-white hover:text-black transition-colors border border-white/10 whitespace-nowrap shrink-0">
+              {/* CTA Button */}
+              <Link to="/contact" className="bg-black text-white font-clash font-semibold text-base px-8 py-4 tracking-wider uppercase hover:bg-white hover:text-black transition-colors border border-white/10 whitespace-nowrap shrink-0">
                 GET IN TOUCH
               </Link>
             </div>

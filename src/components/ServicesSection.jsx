@@ -191,7 +191,7 @@ export default function ServicesSection() {
             </h3>
             {/* Work with us CTA — matching FAQSection Get in touch style */}
             <Link
-              to="/contact"
+              to="/services"
               className="text-[#FF3D3D] font-clash font-semibold text-xs sm:text-sm tracking-wide inline-flex items-center gap-1 hover:text-white transition-colors group mt-1 sm:mt-2"
             >
               <div className="self-start flex items-center justify-center shrink-0">
@@ -210,7 +210,7 @@ export default function ServicesSection() {
                 />
               </div>
               <div className="flex items-center">
-                <span className="underline underline-offset-4">Work with us</span>
+                <span className="underline underline-offset-4">Explore our services</span>
               </div>
             </Link>
           </div>

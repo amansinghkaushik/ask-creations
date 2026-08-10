@@ -1,7 +1,8 @@
 function MenuButton({ variant = 'closed', onClick }) {
   const isOpen = variant === 'open'
-  const squareBase =
-    'h-[5px] w-[5px] origin-center bg-[#ffffff] transition-all duration-[400ms] ease-in-out'
+  const squareClass =
+    'h-[5px] w-[5px] origin-center transition-all duration-[400ms] ease-in-out'
+  const squareStyle = { backgroundColor: '#ffffff' }
 
   return (
     <button
@@ -14,16 +15,19 @@ function MenuButton({ variant = 'closed', onClick }) {
       <div className="flex h-[19px] w-[19px] flex-col gap-[2px]" aria-hidden="true">
         <div className="flex h-[5px] w-[19px] items-center justify-between">
           <div
-            className={`${squareBase} ${isOpen ? 'translate-x-[7px] rotate-45' : ''}`}
+            style={squareStyle}
+            className={`${squareClass} ${isOpen ? 'translate-x-[7px] rotate-45' : ''}`}
           />
           <div
-            className={`${squareBase} ${isOpen ? 'translate-y-[7px] rotate-45' : ''}`}
+            style={squareStyle}
+            className={`${squareClass} ${isOpen ? 'translate-y-[7px] rotate-45' : ''}`}
           />
         </div>
 
         <div className="flex h-[5px] w-[19px] items-center justify-center">
           <div
-            className={`${squareBase} ${
+            style={squareStyle}
+            className={`${squareClass} ${
               isOpen ? 'rotate-45 opacity-100' : 'opacity-0'
             }`}
           />
@@ -31,10 +35,12 @@ function MenuButton({ variant = 'closed', onClick }) {
 
         <div className="flex h-[5px] w-[19px] items-center justify-between">
           <div
-            className={`${squareBase} ${isOpen ? '-translate-y-[7px] rotate-45' : ''}`}
+            style={squareStyle}
+            className={`${squareClass} ${isOpen ? '-translate-y-[7px] rotate-45' : ''}`}
           />
           <div
-            className={`${squareBase} ${isOpen ? '-translate-x-[7px] rotate-45' : ''}`}
+            style={squareStyle}
+            className={`${squareClass} ${isOpen ? '-translate-x-[7px] rotate-45' : ''}`}
           />
         </div>
       </div>

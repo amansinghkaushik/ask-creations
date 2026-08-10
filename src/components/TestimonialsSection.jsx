@@ -123,7 +123,7 @@ export default function TestimonialsSection() {
   )
 
   return (
-    <section ref={sectionRef} className="bg-black text-white py-24 md:py-36 px-4 sm:px-6 md:px-10 lg:px-12 select-none overflow-hidden">
+    <section ref={sectionRef} className="bg-black text-white py-24 md:py-36 px-6 sm:px-10 md:px-16 lg:px-20 select-none overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Section Header Div Wrapper */}
         <div className="testimonials-header flex flex-col items-center">
@@ -170,16 +170,14 @@ export default function TestimonialsSection() {
         </div>
 
         {/* 2-Column Testimonials Grid with Smooth Transition */}
-        <div className="testimonials-grid grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 w-full relative min-h-[280px]">
+        <div className="testimonials-grid grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 w-full relative min-h-[280px]">
           {/* Middle Divider Line on Desktop */}
           <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-neutral-800" />
 
           {currentSet.map((item, idx) => (
             <div
               key={item.id}
-              className={`testimonial-card-item flex flex-col justify-between h-full transition-all duration-700 ease-in-out ${
-                idx === 0 ? 'md:pr-8 lg:pr-12' : 'md:pl-8 lg:pl-12'
-              }`}
+              className={`testimonial-card-item p-6 sm:p-8 md:p-10 flex flex-col justify-between h-full transition-all duration-700 ease-in-out`}
             >
               <div>
                 <div className="text-4xl sm:text-5xl font-serif text-white mb-4 leading-none select-none">

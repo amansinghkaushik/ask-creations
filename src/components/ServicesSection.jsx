@@ -127,11 +127,11 @@ export default function ServicesSection() {
     <section ref={sectionRef} className="bg-black text-white py-20 md:py-32 px-6 sm:px-10 md:px-12 lg:px-16 select-none relative">
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start relative">
         
-        {/* Left Column: Interactive Service Preview Card (Col Span 4 ~33% width) */}
-        <div className="services-preview-card lg:col-span-4 lg:sticky lg:top-28 flex flex-col items-start w-full gap-4 self-start">
+        {/* Left Column: Interactive Service Preview Card (Sticky at top on mobile + desktop) */}
+        <div className="services-preview-card lg:col-span-4 sticky top-16 z-30 bg-black/95 backdrop-blur-md pt-2 pb-4 lg:py-0 border-b border-neutral-900 lg:border-none lg:top-28 flex flex-col items-start w-full gap-3 lg:gap-4 self-start">
           
           {/* Section Header Div Wrapper matching TestimonialsSection */}
-          <div className="text-[#FF3D3D] font-clash font-semibold uppercase tracking-widest mb-4 flex items-center justify-start gap-1">
+          <div className="text-[#FF3D3D] font-clash font-semibold uppercase tracking-widest mb-2 lg:mb-4 flex items-center justify-start gap-1">
             {/* Left Shape Div Wrapper (Aligned to BOTTOM) */}
             <div className="self-end pt-0.5 flex items-center justify-center shrink-0">
               <span
@@ -151,7 +151,7 @@ export default function ServicesSection() {
 
             {/* Header Text Div Wrapper */}
             <div className="flex items-center justify-center">
-              <span className="tracking-[0.25em] text-base">SERVICES</span>
+              <span className="tracking-[0.25em] text-xs sm:text-base">SERVICES</span>
             </div>
 
             {/* Right Shape Div Wrapper (Aligned to TOP) */}
@@ -172,8 +172,8 @@ export default function ServicesSection() {
             </div>
           </div>
 
-          {/* Image Preview Box */}
-          <div className="relative w-full aspect-[4/3] overflow-hidden bg-neutral-900 rounded-sm">
+          {/* Image Preview Box - Compact on mobile (reduced height & width) */}
+          <div className="relative w-1/2 sm:w-2/3 lg:w-full aspect-[4/3] max-h-[150px] sm:max-h-[200px] lg:max-h-none overflow-hidden bg-neutral-900 rounded-sm">
             <img
               src={activeService.img}
               alt={activeService.name}
@@ -182,17 +182,17 @@ export default function ServicesSection() {
           </div>
 
           {/* Service Details below image */}
-          <div className="flex flex-col items-start gap-3 pt-2">
-            <span className="text-neutral-500 font-clash font-medium text-xs uppercase tracking-wider">
+          <div className="flex flex-col items-start gap-1 sm:gap-2 pt-1">
+            <span className="text-neutral-500 font-clash font-medium text-[10px] sm:text-xs uppercase tracking-wider">
               {activeService.name}
             </span>
-            <h3 className="text-white font-clash font-semibold text-lg md:text-xl leading-snug">
+            <h3 className="text-white font-clash font-semibold text-sm sm:text-base md:text-xl leading-snug">
               {activeService.tagline}
             </h3>
             {/* Work with us CTA — matching FAQSection Get in touch style */}
             <Link
               to="/contact"
-              className="text-[#FF3D3D] font-clash font-semibold text-sm tracking-wide inline-flex items-center gap-1 hover:text-white transition-colors group mt-2"
+              className="text-[#FF3D3D] font-clash font-semibold text-xs sm:text-sm tracking-wide inline-flex items-center gap-1 hover:text-white transition-colors group mt-1 sm:mt-2"
             >
               <div className="self-start flex items-center justify-center shrink-0">
                 <span
@@ -217,7 +217,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Right Column: Medium Typography List of Services (Col Span 8 ~67% width) */}
-        <div className="service-list-container mt-20 lg:col-span-8 flex flex-col w-full divide-y divide-neutral-900 border-t border-b border-neutral-900">
+        <div className="service-list-container mt-6 lg:mt-20 lg:col-span-8 flex flex-col w-full divide-y divide-neutral-900 border-t border-b border-neutral-900">
           {services.map((service) => {
             const isActive = service.id === activeServiceId
 
@@ -242,16 +242,6 @@ export default function ServicesSection() {
               </div>
             )
           })}
-          {/* Explore All Services Link */}
-          <div className="pt-6 flex justify-start">
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-2 font-clash font-semibold text-sm text-[#FF3D3D] hover:text-white transition-colors duration-300 uppercase tracking-widest"
-            >
-              <span>Explore All Services</span>
-              <span className="text-base">→</span>
-            </Link>
-          </div>
         </div>
       </div>
     </section>

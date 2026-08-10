@@ -152,6 +152,7 @@ function Navbar() {
               <span className="absolute -bottom-1 md:-bottom-1.5 left-0 h-[3px] md:h-[1.5px] w-full origin-left scale-x-0 bg-[#FF3D3D] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100" />
             </Link>
           </div>
+
           <div className="transition-all duration-400 ease-in-out z-50 shrink-0">
             <MenuButton
               variant={isOpen ? 'open' : 'closed'}

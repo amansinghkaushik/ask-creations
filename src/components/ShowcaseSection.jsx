@@ -112,10 +112,10 @@ export default function ShowcaseSection() {
       ref={sectionRef}
       className="bg-white text-black py-16 md:py-28 px-6 sm:px-10 md:px-12 lg:px-16 max-w-[1440px] mx-auto select-none overflow-hidden"
     >
-      {/* Part 1: Metrics Counters Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 mb-20 text-center items-baseline">
+      {/* Part 1: Metrics Counters Grid with ample breathing gap */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 md:gap-y-0 md:gap-x-16 mb-20 md:mb-28 text-center items-baseline">
         {stats.map((stat, i) => (
-          <div key={i} className="showcase-stat-item flex flex-col items-center">
+          <div key={i} className="showcase-stat-item flex flex-col items-center p-2">
             <span className="showcase-stat-num font-clash font-semibold text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-black tracking-tight leading-none">
               0{stat.suffix}
             </span>

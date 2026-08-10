@@ -90,7 +90,7 @@ export default function HighlightsSection() {
 
   return (
     <section ref={sectionRef} className="bg-white text-black py-24 md:py-36 px-4 sm:px-6 md:px-10 lg:px-12 select-none overflow-hidden">
-      <div className="max-w-9xl mx-auto flex flex-col items-center">
+      <div className="max-w-[1440px] mx-auto flex flex-col items-center">
         {/* Section Header Div Wrapper */}
         <div className="highlights-header flex flex-col items-center">
           <div className="text-[#FF3D3D] font-clash font-semibold uppercase tracking-widest mb-4 flex items-center justify-center gap-1">
@@ -109,10 +109,8 @@ export default function HighlightsSection() {
                 }}
               />
             </div>
-            <div className="flex items-center justify-center">
-              <span className="tracking-[0.25em] text-base">DESIGN HIGHLIGHTS</span>
-            </div>
-            <div className="self-start pb-0.5 flex items-center justify-center shrink-0">
+            <span className="tracking-[0.25em] text-sm sm:text-base">SELECTED PROJECTS</span>
+            <div className="self-end pt-0.5 flex items-center justify-center shrink-0">
               <span
                 className="w-2 h-2 bg-[#FF3D3D] inline-block shrink-0"
                 style={{
@@ -136,12 +134,12 @@ export default function HighlightsSection() {
         </div>
 
         {/* 2x2 Highlights Grid */}
-        <div className="highlights-grid grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-5 gap-y-6 md:gap-y-8 w-full">
+        <div className="highlights-grid grid grid-cols-1 md:grid-cols-2 gap-x-6 md:gap-x-8 gap-y-6 md:gap-y-8 w-full">
           {highlights.map((item) => (
             <a
               key={item.id}
               href={item.link}
-              className="highlight-card group flex flex-col w-full text-black cursor-pointer"
+              className="highlight-card group flex flex-col w-full text-black cursor-pointer transition-transform duration-500 ease-out hover:scale-[1.02]"
             >
               {/* Image Box */}
               <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-neutral-100 shadow-md">

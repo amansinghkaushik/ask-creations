@@ -18,9 +18,9 @@ export default function ManifestoSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: 'top top',
-          end: '+=250%',
+          end: '+=120%',
           pin: true,
-          scrub: 1,
+          scrub: 0.5,
         },
       })
 
@@ -29,67 +29,67 @@ export default function ManifestoSection() {
       const h2 = p2Ref.current?.scrollHeight || 120
       const h3 = p3Ref.current?.scrollHeight || 80
 
-      // Initial State: Wrappers have 0 height, paragraphs hidden at y: 40
+      // Initial State: Wrappers have 0 height, paragraphs hidden at y: 20
       gsap.set(['.manifesto-wrap-1', '.manifesto-wrap-2', '.manifesto-wrap-3'], {
         height: 0,
         overflow: 'hidden',
       })
       gsap.set(['.manifesto-para-1', '.manifesto-para-2', '.manifesto-para-3'], {
         opacity: 0,
-        y: 40,
+        y: 20,
       })
 
-      // 1. Expand Box from Center
+      // 1. Quick expand box from center
       tl.fromTo(
         boxRef.current,
-        { scaleX: 0.15, scaleY: 0.2, opacity: 0 },
-        { scaleX: 1, scaleY: 1, opacity: 1, duration: 1, ease: 'power2.out' }
+        { scaleX: 0.4, scaleY: 0.3, opacity: 0.3 },
+        { scaleX: 1, scaleY: 1, opacity: 1, duration: 0.4, ease: 'power2.out' }
       )
 
       // 2. Expand Box Height for Para 1 & Fade in Para 1
       tl.to('.manifesto-wrap-1', {
         height: h1,
-        duration: 1,
+        duration: 0.6,
         ease: 'power2.out',
       }).to(
         '.manifesto-para-1',
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          ease: 'power3.out',
+          duration: 0.5,
+          ease: 'power2.out',
         },
         '<'
       )
 
       // 3. Expand Box Height for Para 2 & Fade in Para 2
       tl.to('.manifesto-wrap-2', {
-        height: h2 + 28,
-        duration: 1,
+        height: h2 + 20,
+        duration: 0.6,
         ease: 'power2.out',
       }).to(
         '.manifesto-para-2',
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          ease: 'power3.out',
+          duration: 0.5,
+          ease: 'power2.out',
         },
         '<'
       )
 
       // 4. Expand Box Height for Para 3 & Fade in Para 3
       tl.to('.manifesto-wrap-3', {
-        height: h3 + 28,
-        duration: 1,
+        height: h3 + 20,
+        duration: 0.6,
         ease: 'power2.out',
       }).to(
         '.manifesto-para-3',
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          ease: 'power3.out',
+          duration: 0.5,
+          ease: 'power2.out',
         },
         '<'
       )

@@ -11,7 +11,7 @@ import pawwfyImg from '../assets/pawwfy.png'
 import mworldImg from '../assets/mworld.png'
 import creativeImg from '../assets/CreativeImg.png'
 
-// All 10 services from ServicesSection — same data
+// All 10 services from ServicesSection
 const services = [
   { id: 1, name: 'Branding', tagline: 'Where brands find their voice', img: taginMockup },
   { id: 2, name: 'App Design', tagline: 'Intuitive & human-centered mobile experiences', img: pawwfyImg },
@@ -38,30 +38,30 @@ export default function ServicesPage() {
   }, { scope: pageRef })
 
   return (
-    <main ref={pageRef} className="min-h-screen w-full bg-white text-black">
+    <main ref={pageRef} className="min-h-screen w-full bg-white text-black overflow-x-hidden">
       <Navbar />
 
-      <section className="pt-32 md:pt-40 pb-4 px-6 sm:px-10 md:px-12 lg:px-16 max-w-[1440px] mx-auto">
+      <section className="pt-28 sm:pt-36 md:pt-40 pb-8 px-4 sm:px-8 md:px-12 lg:px-16 max-w-[1440px] mx-auto">
         {/* Header row: big title left, description right */}
-        <div className="svc-header flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 sm:gap-16 mb-8 sm:mb-10">
-          <h1 className="font-clash font-medium text-[72px] sm:text-[96px] md:text-[120px] lg:text-[140px] text-black leading-[0.88] tracking-tight shrink-0">
+        <div className="svc-header flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-12 mb-8 sm:mb-12">
+          <h1 className="font-clash font-medium text-5xl sm:text-7xl md:text-8xl lg:text-[110px] xl:text-[130px] text-black leading-[0.9] tracking-tight shrink-0">
             Services
           </h1>
-          <p className="font-sans text-sm sm:text-base text-neutral-500 max-w-xs leading-relaxed sm:pb-3">
+          <p className="font-sans text-sm sm:text-base text-neutral-500 max-w-xs leading-relaxed md:pb-2">
             Our design capabilities are applied with clarity and intent. Structured to support both focused work and long-term needs.
           </p>
         </div>
 
-        {/* 2-col card grid — same card style as ProjectsPage */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {/* 2-col card grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           {services.map((service) => (
             <a
               key={service.id}
               href="/contact"
-              className="svc-card group flex flex-col w-full text-black cursor-pointer"
+              className="svc-card group flex flex-col w-full text-black cursor-pointer transition-transform duration-500 ease-out hover:scale-[1.02]"
             >
               {/* Image */}
-              <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-neutral-100">
+              <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-neutral-100 shadow-sm">
                 <img
                   src={service.img}
                   alt={service.name}
@@ -70,7 +70,7 @@ export default function ServicesPage() {
               </div>
 
               {/* Title row */}
-              <div className="flex items-center justify-between pt-3 pb-2 border-b border-transparent group-hover:border-black/20 transition-colors">
+              <div className="flex items-center justify-between pt-3.5 pb-2 border-b border-transparent group-hover:border-black/20 transition-colors">
                 <div>
                   <h3 className="font-sans font-semibold text-xl sm:text-2xl md:text-3xl text-black tracking-tight">
                     {service.name}

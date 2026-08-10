@@ -182,7 +182,7 @@ export default function ProcessSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-screen min-h-[700px] bg-[#f0f0f2] text-black px-8 sm:px-12 md:px-16 lg:px-20 select-none overflow-hidden flex flex-col justify-between py-14 md:py-16"
+      className="relative w-full min-h-screen lg:h-screen lg:min-h-[700px] bg-[#f0f0f2] text-black px-6 sm:px-10 md:px-16 lg:px-20 select-none overflow-hidden flex flex-col justify-between py-14 md:py-16"
     >
       <div className="max-w-[1500px] w-full mx-auto h-full flex flex-col justify-between">
         

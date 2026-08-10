@@ -130,11 +130,14 @@ export default function FooterSection() {
         <div className="w-full border-b border-neutral-800/90 mb-6 sm:mb-8" />
       </div>
 
-      {/* Huge Typography */}
-      <div className="footer-heading-container w-full flex justify-center items-center overflow-hidden border-t border-white/10 pt-4">
-        <h1 className="footer-heading text-[13vw] sm:text-[16vw] leading-[0.8] font-semibold uppercase tracking-[-0.04em] text-white whitespace-nowrap select-none font-clash">
-          ASK<br/> CREATIONS
-        </h1>
+      {/* Huge Typography matching HeroSection bottom text */}
+      <div className="footer-heading-container w-full flex flex-col items-start overflow-hidden border-t border-white/10 pt-6">
+        <div className="footer-heading font-clash font-semibold text-white uppercase text-[16.32vw] leading-[0.78] tracking-tight">
+          ASK
+        </div>
+        <div className="footer-heading font-clash font-semibold text-white uppercase text-[16.32vw] leading-[0.78] w-full block whitespace-nowrap tracking-tight">
+          CREATIONS
+        </div>
       </div>
     </footer>
   )

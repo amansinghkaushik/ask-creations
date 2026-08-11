@@ -3,6 +3,7 @@ import MenuButton from './MenuButton'
 import TextCycler from './TextCycler'
 import { useLocation } from 'react-router-dom'
 import { TransitionLink } from './PageTransitionContext'
+import logoSvg from '../assets/ask creations logo full.svg'
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -74,29 +75,23 @@ function Navbar() {
       {/* Inner NavBar */}
       <div className="flex items-center justify-between py-[10px] text-white relative">
 
-        {/* Left slot: datetime on home, back button on sub-pages */}
+        {/* Left slot: datetime on home, logo on sub-pages */}
         <div className="flex-1 font-clash text-[16px] font-semibold text-white hidden md:flex items-center">
           {isSubPage ? (
-            <TransitionLink to="/" className="flex items-center gap-2 hover:text-[#FF3D3D] transition-colors duration-300">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              Back to Home
+            <TransitionLink to="/" className="flex items-center hover:opacity-80 transition-opacity duration-300">
+              <img src={logoSvg} alt="ASK Creations" className="h-4 md:h-5 w-auto object-contain" />
             </TransitionLink>
           ) : (
             dateTime
           )}
         </div>
 
-        {/* Center slot: TextCycler on desktop, datetime/back on mobile */}
+        {/* Center slot: TextCycler on desktop, datetime/logo on mobile */}
         <div className="flex-1 text-[16px] font-semibold text-left md:text-center flex justify-start md:justify-center items-center">
-          {/* Mobile: back button on sub-pages, datetime on home */}
+          {/* Mobile: logo on sub-pages, datetime on home */}
           {isSubPage ? (
-            <TransitionLink to="/" className="md:hidden flex items-center gap-2 font-clash text-sm hover:text-[#FF3D3D] transition-colors duration-300">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              Back to Home
+            <TransitionLink to="/" className="md:hidden flex items-center hover:opacity-80 transition-opacity duration-300">
+              <img src={logoSvg} alt="ASK Creations" className="h-4 w-auto object-contain" />
             </TransitionLink>
           ) : (
             <span className="md:hidden font-clash text-xs text-white/80 tracking-wide">{dateTime}</span>

@@ -6,23 +6,28 @@ import PricingSection from '../components/PricingSection'
 import FAQSection from '../components/FAQSection'
 import FooterSection from '../components/FooterSection'
 import taginMockup from '../assets/taginmockup.png'
-import sundarbanImg from '../assets/sundarban.png'
 import pawwfyImg from '../assets/pawwfy.png'
-import mworldImg from '../assets/mworld.png'
-import creativeImg from '../assets/CreativeImg.png'
+import BrandingImg from '../assets/Branding.png'
+import PresentationImg from '../assets/Presentation.webp'
+import SocialMediaImg from '../assets/Socialmedia.webp'
+import CorporateImg from '../assets/Corporates.webp'
+import PackagingImg from '../assets/Packaging.webp'
+import DigitalMarketingImg from '../assets/DigitalMarketing.webp'
+import EcommerceImg from '../assets/Ecommerce.webp'
+import PhotographyImg from '../assets/Photography.webp'
 
-// All 10 services from ServicesSection
+// All 10 services matching ServicesSection
 const services = [
-  { id: 1, name: 'Branding', tagline: 'Where brands find their voice', img: taginMockup },
+  { id: 1, name: 'Branding', tagline: 'Where brands find their voice', img: BrandingImg },
   { id: 2, name: 'App Design', tagline: 'Intuitive & human-centered mobile experiences', img: pawwfyImg },
-  { id: 3, name: 'Presentation', tagline: 'High-stakes pitch decks that win deals', img: creativeImg },
-  { id: 4, name: 'Social Media', tagline: 'Engaging content & visual campaign strategy', img: sundarbanImg },
-  { id: 5, name: 'Corporate', tagline: 'Enterprise-level brand identity systems', img: mworldImg },
-  { id: 6, name: 'Packaging', tagline: 'Tactile product packaging that stands out on shelves', img: creativeImg },
+  { id: 3, name: 'Presentation', tagline: 'High-stakes pitch decks that win deals', img: PresentationImg },
+  { id: 4, name: 'Social Media', tagline: 'Engaging content & visual campaign strategy', img: SocialMediaImg },
+  { id: 5, name: 'Corporate', tagline: 'Enterprise-level brand identity systems', img: CorporateImg },
+  { id: 6, name: 'Packaging', tagline: 'Tactile product packaging that stands out on shelves', img: PackagingImg },
   { id: 7, name: 'Web Design', tagline: 'High-converting interactive web experiences', img: taginMockup },
-  { id: 8, name: 'Digital Marketing', tagline: 'Data-driven growth & performance creative', img: sundarbanImg },
-  { id: 9, name: 'E-Commerce', tagline: 'Seamless online store purchasing flows', img: pawwfyImg },
-  { id: 10, name: 'Photography', tagline: 'Cinematic product & editorial portraiture', img: creativeImg },
+  { id: 8, name: 'Digital Marketing', tagline: 'Data-driven growth & performance creative', img: DigitalMarketingImg },
+  { id: 9, name: 'E-Commerce', tagline: 'Seamless online store purchasing flows', img: EcommerceImg },
+  { id: 10, name: 'Photography', tagline: 'Cinematic product & editorial portraiture', img: PhotographyImg },
 ]
 
 export default function ServicesPage() {

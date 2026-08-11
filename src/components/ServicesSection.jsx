@@ -4,11 +4,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import { TransitionLink } from './PageTransitionContext'
 import taginMockup from '../assets/taginmockup.png'
-import sundarbanImg from '../assets/sundarban.png'
 import pawwfyImg from '../assets/pawwfy.png'
-import mworldImg from '../assets/mworld.png'
 import creativeImg from '../assets/CreativeImg.png'
 import shapeImg from '../assets/Shape.png'
+import BrandingImg from '../assets/Branding.png'
+import PresentationImg from '../assets/Presentation.webp'
+import SocialMediaImg from '../assets/Socialmedia.webp'
+import CorporateImg from '../assets/Corporates.webp'
+import PackagingImg from '../assets/Packaging.webp'
+import DigitalMarketingImg from '../assets/DigitalMarketing.webp'
+import EcommerceImg from '../assets/Ecommerce.webp'
+import PhotographyImg from '../assets/Photography.webp' 
+
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -21,7 +28,7 @@ export default function ServicesSection() {
       id: 1,
       name: 'Branding',
       tagline: 'Where brands find their voice',
-      img: taginMockup,
+      img: BrandingImg,
     },
     {
       id: 2,
@@ -33,25 +40,25 @@ export default function ServicesSection() {
       id: 3,
       name: 'Presentation',
       tagline: 'High-stakes pitch decks that win deals',
-      img: creativeImg,
+      img: PresentationImg,
     },
     {
       id: 4,
       name: 'Social Media',
       tagline: 'Engaging content & visual campaign strategy',
-      img: sundarbanImg,
+      img: SocialMediaImg,
     },
     {
       id: 5,
       name: 'Corporate',
       tagline: 'Enterprise-level brand identity systems',
-      img: mworldImg,
+      img: CorporateImg,
     },
     {
       id: 6,
       name: 'Packaging',
       tagline: 'Tactile product packaging that stands out on shelves',
-      img: creativeImg,
+      img: PackagingImg,
     },
     {
       id: 7,
@@ -63,19 +70,19 @@ export default function ServicesSection() {
       id: 8,
       name: 'Digital Marketing',
       tagline: 'Data-driven growth & performance creative',
-      img: sundarbanImg,
+      img: DigitalMarketingImg,
     },
     {
       id: 9,
       name: 'E-Commerce',
       tagline: 'Seamless online store purchasing flows',
-      img: pawwfyImg,
+      img: EcommerceImg,
     },
     {
       id: 10,
       name: 'Photography',
       tagline: 'Cinematic product & editorial portraiture',
-      img: creativeImg,
+      img: PhotographyImg,
     },
   ]
 

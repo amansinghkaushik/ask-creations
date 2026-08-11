@@ -181,7 +181,7 @@ export default function PricingSection() {
                 <p className="font-sans text-[11px] text-neutral-400 mb-1 uppercase tracking-widest">Starting from</p>
                 <div className="flex items-baseline gap-1.5">
                   <span className="font-clash font-semibold text-4xl sm:text-5xl leading-none tracking-tight text-black">
-                    ₹60,000
+                    ₹20,000
                   </span>
                   <span className="font-clash font-normal text-sm text-neutral-400">/ month</span>
                 </div>

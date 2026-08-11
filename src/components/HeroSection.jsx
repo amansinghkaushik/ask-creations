@@ -218,7 +218,7 @@ export default function HeroSection({ ready = false }) {
         </div>
 
         {/* Layer 1.9: Center Horizontal Services Bar */}
-        <div className="absolute top-[48%] -translate-y-1/2 w-full px-4 sm:px-6 md:px-10 lg:px-12 z-20 flex justify-between items-center text-neutral-200 font-clash font-semibold text-[10px] sm:text-xs md:text-xs lg:text-sm tracking-wide uppercase overflow-hidden py-2 gap-1 sm:gap-2">
+        <div className="absolute top-[48%] xl:top-[40%] -translate-y-1/2 w-full px-4 sm:px-6 md:px-10 lg:px-12 z-20 flex justify-between items-center text-neutral-200 font-clash font-semibold text-[10px] sm:text-xs md:text-xs lg:text-sm tracking-wide uppercase overflow-hidden py-2 gap-1 sm:gap-2">
           <div className="overflow-hidden inline-block">
             <span className="hero-services-item inline-block hover:text-white transition-colors duration-300 cursor-pointer">
               Brand Identity

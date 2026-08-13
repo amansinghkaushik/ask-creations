@@ -80,8 +80,8 @@ export default function FAQSection() {
   )
 
   return (
-    <section ref={sectionRef} className="bg-white text-black py-24 md:py-36 px-4 sm:px-6 md:px-10 lg:px-12 select-none overflow-hidden">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <section ref={sectionRef} className="bg-white text-black py-24 md:py-36 px-4 sm:px-6 md:px-10 lg:px-12 select-none overflow-hidden min-h-[620px] sm:min-h-[580px] md:min-h-[540px] flex flex-col justify-center">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start w-full">
         
         {/* Left Column: Title, Subtitle, CTA */}
         <div className="faq-left-col lg:col-span-5 flex flex-col items-start w-full">
@@ -125,8 +125,8 @@ export default function FAQSection() {
           </div>
         </div>
 
-        {/* Right Column: Accordion List with Constant Min-Height */}
-        <div className="faq-list-container lg:col-span-7 flex flex-col w-full divide-y divide-neutral-200 border-t border-b border-neutral-200 min-h-[440px] sm:min-h-[420px] md:min-h-[410px]">
+        {/* Right Column: Accordion List with Tightly Attached Bottom Border */}
+        <div className="faq-list-container lg:col-span-7 flex flex-col w-full divide-y divide-neutral-200 border-t border-b border-neutral-200">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx
 

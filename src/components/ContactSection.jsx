@@ -3,10 +3,8 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import shapeImg from '../assets/Shape.png'
-import { Resend } from 'resend'
 
-const apiKey = import.meta.env.VITE_RESEND_API_KEY || ''
-const resend = new Resend(apiKey)
+const RESEND_API_KEY = import.meta.env.VITE_RESEND_API_KEY || ''
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -41,11 +39,11 @@ export default function ContactSection() {
     `
 
     try {
-      // Primary attempt via direct API request (supported in browser) or resend client
+      // Primary attempt via direct API request (supported natively in browser)
       const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${apiKey}`,
+          'Authorization': `Bearer ${RESEND_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -64,7 +62,7 @@ export default function ContactSection() {
         await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${apiKey}`,
+            'Authorization': `Bearer ${RESEND_API_KEY}`,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({

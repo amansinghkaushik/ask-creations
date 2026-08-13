@@ -3,6 +3,10 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import shapeImg from '../assets/Shape.png'
+import { Resend } from 'resend'
+
+const apiKey = import.meta.env.VITE_RESEND_API_KEY || ''
+const resend = new Resend(apiKey)
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -10,14 +14,78 @@ export default function ContactSection() {
   const sectionRef = useRef(null)
   const [formState, setFormState] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    setErrorMessage('')
+
+    const { name, email, message } = formState
+
+    const htmlContent = `
+      <div style="font-family: Arial, sans-serif; padding: 20px; color: #111; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 8px;">
+        <h2 style="color: #FF3D3D; font-size: 24px; margin-bottom: 16px;">New Contact Form Message</h2>
+        <p style="margin: 8px 0;"><strong>Name:</strong> ${name}</p>
+        <p style="margin: 8px 0;"><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+        <p style="margin: 16px 0 8px 0;"><strong>Message:</strong></p>
+        <div style="background: #f8f8f8; padding: 16px; border-left: 4px solid #FF3D3D; font-size: 15px; line-height: 1.5; border-radius: 4px;">
+          ${message.replace(/\n/g, '<br/>')}
+        </div>
+      </div>
+    `
+
+    try {
+      // Primary attempt via direct API request (supported in browser) or resend client
+      const response = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'onboarding@resend.dev',
+          to: 'hello@askcreations.studio',
+          subject: `New Inquiry from ${name}`,
+          html: htmlContent,
+          reply_to: email,
+        }),
+      })
+
+      const data = await response.json()
+
+      // If domain verification restricts recipient on testing mode (resend.dev limit), send to fallback account email
+      if (response.status === 403 && data.message?.includes('amansinghkaushik8@gmail.com')) {
+        await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: 'onboarding@resend.dev',
+            to: 'amansinghkaushik8@gmail.com',
+            subject: `New Inquiry from ${name}`,
+            html: htmlContent,
+            reply_to: email,
+          }),
+        })
+      } else if (!response.ok && data.message) {
+        throw new Error(data.message)
+      }
+
+      setSubmitted(true)
+    } catch (err) {
+      console.error('Failed to send email:', err)
+      setErrorMessage(err.message || 'Failed to send message. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   useGSAP(
@@ -111,10 +179,10 @@ export default function ContactSection() {
                 </svg>
               </div>
               <a
-                href="mailto:ask@askcreations.in"
+                href="mailto:hello@askcreations.studio"
                 className="font-clash font-medium text-base sm:text-lg text-white/70 hover:text-[#FF3D3D] transition-colors duration-300 tracking-tight"
               >
-                ask@askcreations.in
+                hello@askcreations.studio
               </a>
             </div>
 
@@ -183,6 +251,12 @@ export default function ContactSection() {
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
 
+                {errorMessage && (
+                  <div className="p-3 bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-sans rounded">
+                    {errorMessage}
+                  </div>
+                )}
+
                 {/* Name */}
                 <div className="flex flex-col gap-2">
                   <label className="font-clash font-medium text-[11px] uppercase tracking-widest text-white/40">
@@ -195,7 +269,8 @@ export default function ContactSection() {
                     onChange={handleChange}
                     placeholder="Your Name"
                     required
-                    className="bg-[#222222] border border-white/[0.08] px-4 py-3.5 font-sans text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF3D3D]/50 transition-colors duration-300 w-full"
+                    disabled={loading}
+                    className="bg-[#222222] border border-white/[0.08] px-4 py-3.5 font-sans text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF3D3D]/50 transition-colors duration-300 w-full disabled:opacity-50"
                   />
                 </div>
 
@@ -211,7 +286,8 @@ export default function ContactSection() {
                     onChange={handleChange}
                     placeholder="name@email.com"
                     required
-                    className="bg-[#222222] border border-white/[0.08] px-4 py-3.5 font-sans text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF3D3D]/50 transition-colors duration-300 w-full"
+                    disabled={loading}
+                    className="bg-[#222222] border border-white/[0.08] px-4 py-3.5 font-sans text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF3D3D]/50 transition-colors duration-300 w-full disabled:opacity-50"
                   />
                 </div>
 
@@ -227,19 +303,23 @@ export default function ContactSection() {
                     placeholder="Type your message..."
                     rows={5}
                     required
-                    className="bg-[#222222] border border-white/[0.08] px-4 py-3.5 font-sans text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF3D3D]/50 transition-colors duration-300 w-full resize-none"
+                    disabled={loading}
+                    className="bg-[#222222] border border-white/[0.08] px-4 py-3.5 font-sans text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF3D3D]/50 transition-colors duration-300 w-full resize-none disabled:opacity-50"
                   />
                 </div>
 
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="group w-full bg-white text-black font-clash font-semibold text-sm uppercase tracking-widest py-4 hover:bg-[#FF3D3D] hover:text-white transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer mt-2"
+                  disabled={loading}
+                  className="group w-full bg-white text-black font-clash font-semibold text-sm uppercase tracking-widest py-4 hover:bg-[#FF3D3D] hover:text-white transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer mt-2 disabled:opacity-50"
                 >
-                  <span>Send Message</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
+                  <span>{loading ? 'Sending...' : 'Send Message'}</span>
+                  {!loading && (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  )}
                 </button>
 
               </form>

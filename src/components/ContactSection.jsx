@@ -4,8 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import shapeImg from '../assets/Shape.png'
 
-const RESEND_API_KEY = import.meta.env.VITE_RESEND_API_KEY || ''
-
 gsap.registerPlugin(ScrollTrigger)
 
 export default function ContactSection() {
@@ -26,55 +24,19 @@ export default function ContactSection() {
 
     const { name, email, message } = formState
 
-    const htmlContent = `
-      <div style="font-family: Arial, sans-serif; padding: 20px; color: #111; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 8px;">
-        <h2 style="color: #FF3D3D; font-size: 24px; margin-bottom: 16px;">New Contact Form Message</h2>
-        <p style="margin: 8px 0;"><strong>Name:</strong> ${name}</p>
-        <p style="margin: 8px 0;"><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-        <p style="margin: 16px 0 8px 0;"><strong>Message:</strong></p>
-        <div style="background: #f8f8f8; padding: 16px; border-left: 4px solid #FF3D3D; font-size: 15px; line-height: 1.5; border-radius: 4px;">
-          ${message.replace(/\n/g, '<br/>')}
-        </div>
-      </div>
-    `
-
     try {
-      // Primary attempt via direct API request (supported natively in browser)
-      const response = await fetch('https://api.resend.com/emails', {
+      const response = await fetch('/api/send', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${RESEND_API_KEY}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          from: 'onboarding@resend.dev',
-          to: 'hello@askcreations.studio',
-          subject: `New Inquiry from ${name}`,
-          html: htmlContent,
-          reply_to: email,
-        }),
+        body: JSON.stringify({ name, email, message }),
       })
 
       const data = await response.json()
 
-      // If domain verification restricts recipient on testing mode (resend.dev limit), send to fallback account email
-      if (response.status === 403 && data.message?.includes('amansinghkaushik8@gmail.com')) {
-        await fetch('https://api.resend.com/emails', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${RESEND_API_KEY}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            from: 'onboarding@resend.dev',
-            to: 'amansinghkaushik8@gmail.com',
-            subject: `New Inquiry from ${name}`,
-            html: htmlContent,
-            reply_to: email,
-          }),
-        })
-      } else if (!response.ok && data.message) {
-        throw new Error(data.message)
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send message.')
       }
 
       setSubmitted(true)

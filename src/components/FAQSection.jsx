@@ -125,8 +125,8 @@ export default function FAQSection() {
           </div>
         </div>
 
-        {/* Right Column: Accordion List */}
-        <div className="faq-list-container lg:col-span-7 flex flex-col w-full divide-y divide-neutral-200 border-t border-b border-neutral-200">
+        {/* Right Column: Accordion List with Constant Min-Height */}
+        <div className="faq-list-container lg:col-span-7 flex flex-col w-full divide-y divide-neutral-200 border-t border-b border-neutral-200 min-h-[440px] sm:min-h-[420px] md:min-h-[410px]">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx
 
@@ -144,13 +144,17 @@ export default function FAQSection() {
                   </span>
                 </button>
 
-                {isOpen && (
-                  <div className="mt-4 pr-6 animate-fadeIn">
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    isOpen ? 'grid-rows-[1fr] opacity-100 mt-4' : 'grid-rows-[0fr] opacity-0 mt-0'
+                  }`}
+                >
+                  <div className="overflow-hidden pr-6">
                     <p className="text-neutral-600 font-sans text-sm sm:text-base leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
-                )}
+                </div>
               </div>
             )
           })}

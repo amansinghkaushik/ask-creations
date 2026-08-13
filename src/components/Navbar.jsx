@@ -50,20 +50,6 @@ function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleNavClick = (e, targetId) => {
-    setIsOpen(false)
-    if (window.location.pathname === '/' || window.location.pathname === '') {
-      e.preventDefault()
-      const element = document.getElementById(targetId)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-        window.history.pushState(null, '', `/#${targetId}`)
-      } else {
-        window.location.href = `/#${targetId}`
-      }
-    }
-  }
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 px-6 md:px-10 lg:px-12 z-[999] transition-all duration-500 ease-in-out ${

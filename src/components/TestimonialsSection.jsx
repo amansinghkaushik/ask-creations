@@ -70,17 +70,17 @@ export default function TestimonialsSection() {
   ]
 
   const [activeSetIndex, setActiveSetIndex] = useState(0)
-  const [isHovered, setIsHovered] = useState(false)
+  const isHoveredRef = useRef(false)
 
   useEffect(() => {
-    if (isHovered) return
-
     const timer = setInterval(() => {
-      setActiveSetIndex((prev) => (prev + 1) % testimonialSets.length)
+      if (!isHoveredRef.current) {
+        setActiveSetIndex((prev) => (prev + 1) % testimonialSets.length)
+      }
     }, 5000)
 
     return () => clearInterval(timer)
-  }, [isHovered, testimonialSets.length])
+  }, [testimonialSets.length])
 
   const currentSet = testimonialSets[activeSetIndex]
 
@@ -126,7 +126,12 @@ export default function TestimonialsSection() {
   )
 
   return (
-    <section ref={sectionRef} className="bg-black text-white py-24 md:py-36 px-6 sm:px-10 md:px-16 lg:px-20 select-none overflow-hidden">
+    <section
+      ref={sectionRef}
+      onMouseEnter={() => { isHoveredRef.current = true }}
+      onMouseLeave={() => { isHoveredRef.current = false }}
+      className="bg-black text-white py-24 md:py-36 px-6 sm:px-10 md:px-16 lg:px-20 select-none overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Section Header Div Wrapper */}
         <div className="testimonials-header flex flex-col items-center">
@@ -174,8 +179,6 @@ export default function TestimonialsSection() {
 
         {/* 2-Column Testimonials Grid with Locked Constant Height */}
         <div
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
           className="testimonials-grid grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 w-full relative min-h-[760px] sm:min-h-[680px] md:min-h-[380px]"
         >
           {/* Middle Divider Line on Desktop */}

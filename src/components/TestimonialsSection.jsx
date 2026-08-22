@@ -126,12 +126,7 @@ export default function TestimonialsSection() {
   )
 
   return (
-    <section
-      ref={sectionRef}
-      onMouseEnter={() => { isHoveredRef.current = true }}
-      onMouseLeave={() => { isHoveredRef.current = false }}
-      className="bg-black text-white py-24 md:py-36 px-6 sm:px-10 md:px-16 lg:px-20 select-none overflow-hidden"
-    >
+    <section ref={sectionRef} className="bg-black text-white py-24 md:py-36 px-6 sm:px-10 md:px-16 lg:px-20 select-none overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         {/* Section Header Div Wrapper */}
         <div className="testimonials-header flex flex-col items-center">
@@ -177,8 +172,10 @@ export default function TestimonialsSection() {
           </h2>
         </div>
 
-        {/* 2-Column Testimonials Grid with Locked Constant Height */}
+        {/* 2-Column Testimonials Grid with Locked Constant Height & Hover Pause */}
         <div
+          onMouseEnter={() => { isHoveredRef.current = true }}
+          onMouseLeave={() => { isHoveredRef.current = false }}
           className="testimonials-grid grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 w-full relative min-h-[760px] sm:min-h-[680px] md:min-h-[380px]"
         >
           {/* Middle Divider Line on Desktop */}

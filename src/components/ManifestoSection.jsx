@@ -8,9 +8,9 @@ gsap.registerPlugin(ScrollTrigger)
 export default function ManifestoSection() {
   const sectionRef = useRef(null)
   const boxRef = useRef(null)
-  const p1Ref = useRef(null)
-  const p2Ref = useRef(null)
-  const p3Ref = useRef(null)
+  const p1TextRef = useRef(null)
+  const p2TextRef = useRef(null)
+  const p3TextRef = useRef(null)
 
   useGSAP(
     () => {
@@ -21,13 +21,9 @@ export default function ManifestoSection() {
           end: '+=120%',
           pin: true,
           scrub: 0.5,
+          invalidateOnRefresh: true,
         },
       })
-
-      // Calculate natural heights
-      const h1 = p1Ref.current?.scrollHeight || 120
-      const h2 = p2Ref.current?.scrollHeight || 120
-      const h3 = p3Ref.current?.scrollHeight || 80
 
       // Initial State: Wrappers have 0 height, paragraphs hidden at y: 20
       gsap.set(['.manifesto-wrap-1', '.manifesto-wrap-2', '.manifesto-wrap-3'], {
@@ -48,7 +44,7 @@ export default function ManifestoSection() {
 
       // 2. Expand Box Height for Para 1 & Fade in Para 1
       tl.to('.manifesto-wrap-1', {
-        height: h1,
+        height: () => (p1TextRef.current ? p1TextRef.current.offsetHeight + 10 : 'auto'),
         duration: 0.6,
         ease: 'power2.out',
       }).to(
@@ -64,7 +60,7 @@ export default function ManifestoSection() {
 
       // 3. Expand Box Height for Para 2 & Fade in Para 2
       tl.to('.manifesto-wrap-2', {
-        height: h2 + 20,
+        height: () => (p2TextRef.current ? p2TextRef.current.offsetHeight + 30 : 'auto'),
         duration: 0.6,
         ease: 'power2.out',
       }).to(
@@ -80,7 +76,7 @@ export default function ManifestoSection() {
 
       // 4. Expand Box Height for Para 3 & Fade in Para 3
       tl.to('.manifesto-wrap-3', {
-        height: h3 + 20,
+        height: () => (p3TextRef.current ? p3TextRef.current.offsetHeight + 30 : 'auto'),
         duration: 0.6,
         ease: 'power2.out',
       }).to(
@@ -93,6 +89,11 @@ export default function ManifestoSection() {
         },
         '<'
       )
+
+      // Refresh ScrollTrigger when fonts load
+      document.fonts?.ready?.then(() => {
+        ScrollTrigger.refresh()
+      })
     },
     { scope: sectionRef }
   )
@@ -124,22 +125,22 @@ export default function ManifestoSection() {
         {/* Content Container (Height grows dynamically as wrappers expand) */}
         <div className="flex flex-col items-center justify-center w-full">
           {/* Paragraph 1 Wrapper */}
-          <div ref={p1Ref} className="manifesto-wrap-1 w-full flex justify-center items-center">
-            <p className="manifesto-para-1 font-clash font-medium text-2xl sm:text-3xl md:text-[38px] text-black leading-[1.15] tracking-tight max-w-[520px]">
+          <div className="manifesto-wrap-1 w-full flex justify-center items-center">
+            <p ref={p1TextRef} className="manifesto-para-1 font-clash font-medium text-2xl sm:text-3xl md:text-[38px] text-black leading-[1.15] tracking-tight max-w-[520px]">
               Design shapes the world not as decoration, but as a force that leaves a mark.
             </p>
           </div>
 
           {/* Paragraph 2 Wrapper */}
-          <div ref={p2Ref} className="manifesto-wrap-2 w-full flex justify-center items-center">
-            <p className="manifesto-para-2 font-clash font-medium text-2xl sm:text-3xl md:text-[38px] text-black leading-[1.15] tracking-tight max-w-[520px] pt-6 md:pt-8">
+          <div className="manifesto-wrap-2 w-full flex justify-center items-center">
+            <p ref={p2TextRef} className="manifesto-para-2 font-clash font-medium text-2xl sm:text-3xl md:text-[38px] text-black leading-[1.15] tracking-tight max-w-[520px] pt-6 md:pt-8">
               It defines how your brand is perceived and how it’s experienced.
             </p>
           </div>
 
           {/* Paragraph 3 Wrapper */}
-          <div ref={p3Ref} className="manifesto-wrap-3 w-full flex justify-center items-center">
-            <h3 className="manifesto-para-3 font-clash font-medium text-3xl sm:text-4xl md:text-[46px] text-black tracking-tight pt-6 md:pt-8">
+          <div className="manifesto-wrap-3 w-full flex justify-center items-center">
+            <h3 ref={p3TextRef} className="manifesto-para-3 font-clash font-medium text-3xl sm:text-4xl md:text-[46px] text-black tracking-tight pt-6 md:pt-8">
               Leave yours.
             </h3>
           </div>

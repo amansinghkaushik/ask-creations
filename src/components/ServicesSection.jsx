@@ -126,6 +126,21 @@ export default function ServicesSection() {
           },
         }
       )
+
+      // 3. ScrollTrigger to auto-highlight active service item as user scrolls
+      const listItems = gsap.utils.toArray('.service-list-item')
+      listItems.forEach((item) => {
+        const id = parseInt(item.getAttribute('data-service-id'), 10)
+        if (!id) return
+
+        ScrollTrigger.create({
+          trigger: item,
+          start: 'top 55%',
+          end: 'bottom 45%',
+          onEnter: () => setActiveServiceId(id),
+          onEnterBack: () => setActiveServiceId(id),
+        })
+      })
     },
     { scope: sectionRef }
   )
@@ -231,6 +246,7 @@ export default function ServicesSection() {
             return (
               <div
                 key={service.id}
+                data-service-id={service.id}
                 onMouseEnter={() => setActiveServiceId(service.id)}
                 onClick={() => setActiveServiceId(service.id)}
                 className="service-list-item group py-4 sm:py-5 md:py-6 cursor-pointer flex items-center justify-between transition-colors duration-300"

@@ -70,14 +70,17 @@ export default function TestimonialsSection() {
   ]
 
   const [activeSetIndex, setActiveSetIndex] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
 
   useEffect(() => {
+    if (isHovered) return
+
     const timer = setInterval(() => {
       setActiveSetIndex((prev) => (prev + 1) % testimonialSets.length)
     }, 5000)
 
     return () => clearInterval(timer)
-  }, [testimonialSets.length])
+  }, [isHovered, testimonialSets.length])
 
   const currentSet = testimonialSets[activeSetIndex]
 
@@ -170,7 +173,11 @@ export default function TestimonialsSection() {
         </div>
 
         {/* 2-Column Testimonials Grid with Locked Constant Height */}
-        <div className="testimonials-grid grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 w-full relative min-h-[760px] sm:min-h-[680px] md:min-h-[380px]">
+        <div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="testimonials-grid grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 w-full relative min-h-[760px] sm:min-h-[680px] md:min-h-[380px]"
+        >
           {/* Middle Divider Line on Desktop */}
           <div className="hidden md:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-[1px] bg-neutral-800" />
 

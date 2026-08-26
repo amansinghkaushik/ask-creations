@@ -142,7 +142,7 @@ export default function ContactSection() {
                 href="mailto:hello@askcreations.studio"
                 className="font-clash font-medium text-base sm:text-lg text-white/70 hover:text-[#FF3D3D] transition-colors duration-300 tracking-tight"
               >
-                hello@askcreations.studio
+                amansinghkaushik8@gmail.com
               </a>
             </div>
 

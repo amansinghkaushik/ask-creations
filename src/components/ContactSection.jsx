@@ -154,10 +154,10 @@ export default function ContactSection() {
                 </svg>
               </div>
               <a
-                href="tel:+919999999999"
+                href="tel:+919651969409"
                 className="font-clash font-medium text-base sm:text-lg text-white/70 hover:text-[#FF3D3D] transition-colors duration-300 tracking-tight"
               >
-                +91 99999 99999
+                +91 9651969409
               </a>
             </div>
 

@@ -10,10 +10,10 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
 const projects = [
-  { id: 'tagin', title: 'TAG-IN', img: taginMockup, alt: 'TAG-IN Mockup' },
-  { id: 'sundarban', title: 'Sundarban', img: sundarbanImg, alt: 'Sundarban Mockup' },
-  { id: 'pawffy', title: 'Pawffy', img: pawwfyImg, alt: 'Pawffy Mockup' },
-  { id: 'mworld', title: 'M-World', img: mworldImg, alt: 'M-World Mockup' },
+  { id: 'tagin', title: 'TAG-IN', img: taginMockup, alt: 'TAG-IN Mockup', link: 'https://tag-in-manufacture.vercel.app' },
+  { id: 'sundarban', title: 'Sundarban', img: sundarbanImg, alt: 'Sundarban Mockup', link: 'https://sundarban-portfolio.vercel.app' },
+  { id: 'pawffy', title: 'Pawffy', img: pawwfyImg, alt: 'Pawffy Mockup', link: 'https://www.figma.com/design/9Llr3YgsLlpOyAHHw0QBbF/PAWFFY?node-id=0-1&t=MwW5KcQ92cfM00O7-1' },
+  { id: 'mworld', title: 'M-World', img: mworldImg, alt: 'M-World Mockup', link: 'https://mworld.tech' },
 ]
 
 export default function ProjectsPage() {
@@ -48,7 +48,9 @@ export default function ProjectsPage() {
           {projects.map((project) => (
             <a
               key={project.id}
-              href={`#${project.id}`}
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
               className="proj-card group flex flex-col w-full text-black cursor-pointer transition-transform duration-500 ease-out hover:scale-[1.02]"
             >
               {/* Image */}

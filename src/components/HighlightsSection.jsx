@@ -20,28 +20,28 @@ export default function HighlightsSection() {
       title: 'TAG-IN',
       img: taginMockup,
       alt: 'TAG-IN Shoes Mockup',
-      link: '#tag-in',
+      link: 'https://tag-in-manufacture.vercel.app',
     },
     {
       id: 2,
       title: 'Sundarban',
       img: sundarbanImg,
       alt: 'Sundarban Eco Platform Mockup',
-      link: '#sundarban',
+      link: 'https://sundarban-portfolio.vercel.app',
     },
     {
       id: 3,
       title: 'Pawffy',
       img: pawwfyImg,
       alt: 'Pawffy Pet Adoption App Mockup',
-      link: '#pawffy',
+      link: 'https://www.figma.com/design/9Llr3YgsLlpOyAHHw0QBbF/PAWFFY?node-id=0-1&t=MwW5KcQ92cfM00O7-1',
     },
     {
       id: 4,
       title: 'M-World',
       img: mworldImg,
       alt: 'M-World Digital Experience Mockup',
-      link: '#mworld',
+      link: 'https://mworld.tech',
     },
   ]
 
@@ -139,6 +139,8 @@ export default function HighlightsSection() {
             <a
               key={item.id}
               href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
               className="highlight-card group flex flex-col w-full text-black cursor-pointer transition-transform duration-500 ease-out hover:scale-[1.02]"
             >
               {/* Image Box */}

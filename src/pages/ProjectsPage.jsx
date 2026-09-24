@@ -10,10 +10,10 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
 const projects = [
-  { id: 'tagin', title: 'TAG-IN', img: taginMockup, alt: 'TAG-IN Mockup', link: 'https://tag-in-manufacture.vercel.app' },
-  { id: 'sundarban', title: 'Sundarban', img: sundarbanImg, alt: 'Sundarban Mockup', link: 'https://sundarban-portfolio.vercel.app' },
-  { id: 'pawffy', title: 'Pawffy', img: pawwfyImg, alt: 'Pawffy Mockup', link: 'https://www.figma.com/design/9Llr3YgsLlpOyAHHw0QBbF/PAWFFY?node-id=0-1&t=MwW5KcQ92cfM00O7-1' },
   { id: 'mworld', title: 'M-World', img: mworldImg, alt: 'M-World Mockup', link: 'https://mworld.tech' },
+  { id: 'sundarban', title: 'Sundarban', img: sundarbanImg, alt: 'Sundarban Mockup', link: 'https://sundarban-portfolio.vercel.app' },
+  { id: 'tagin', title: 'TAG-IN', img: taginMockup, alt: 'TAG-IN Mockup', link: 'https://tag-in-manufacture.vercel.app' },
+  { id: 'pawffy', title: 'Pawffy', img: pawwfyImg, alt: 'Pawffy Mockup', link: 'https://www.figma.com/design/9Llr3YgsLlpOyAHHw0QBbF/PAWFFY?node-id=0-1&t=MwW5KcQ92cfM00O7-1' },
 ]
 
 export default function ProjectsPage() {

@@ -17,31 +17,31 @@ export default function HighlightsSection() {
   const highlights = [
     {
       id: 1,
-      title: 'TAG-IN',
-      img: taginMockup,
-      alt: 'TAG-IN Shoes Mockup',
-      link: 'https://tag-in-manufacture.vercel.app',
+      title: 'M-World',
+      img: mworldImg,
+      alt: 'M-World Digital Experience Mockup',
+      link: 'https://mworld.tech',
     },
     {
-      id: 2,
+      id: 3,
       title: 'Sundarban',
       img: sundarbanImg,
       alt: 'Sundarban Eco Platform Mockup',
       link: 'https://sundarban-portfolio.vercel.app',
     },
     {
-      id: 3,
+      id: 2,
+      title: 'TAG-IN',
+      img: taginMockup,
+      alt: 'TAG-IN Shoes Mockup',
+      link: 'https://tag-in-manufacture.vercel.app',
+    },
+    {
+      id: 4,
       title: 'Pawffy',
       img: pawwfyImg,
       alt: 'Pawffy Pet Adoption App Mockup',
       link: 'https://www.figma.com/design/9Llr3YgsLlpOyAHHw0QBbF/PAWFFY?node-id=0-1&t=MwW5KcQ92cfM00O7-1',
-    },
-    {
-      id: 4,
-      title: 'M-World',
-      img: mworldImg,
-      alt: 'M-World Digital Experience Mockup',
-      link: 'https://mworld.tech',
     },
   ]
 
